@@ -1,0 +1,15 @@
+位置：app/http/Controller
+          命名：大驼峰+Controller.php(LoginController.php)
+
+         使用artisan命令创建控制器 ：cmd->php artisan make:controller LoginController(会直接生成基础代码)。
+
+
+        控制器路由：使用路由规则调用控制器下的方法，而不再走回调函数
+          定义格式：Route::请求方法（路由表达式，控制器@方法）；
+          在web.php下的控制器路由写法：Route::get('/login',LoginController@index)
+       
+
+        控制器分目录控制（admin/home）
+          使用artisan命令创建控制器 ：cmd->php artisan make:controller Admin/LoginController(会直接生成基础代码)。
+           定义格式：Route::请求方法（路由表达式，文件夹名\控制器@方法）；
+           在web.php下的控制器路由写法：Route::get('/login',Admin\LoginController@index) 注：必须用\符号

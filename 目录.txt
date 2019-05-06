@@ -1,0 +1,27 @@
+目录结构：
+        APP：项目核心代码文件一般放在APP文件。
+               控制器：APP->http->controllers放控制器文件（controllers为父级控制器，auth为控制器集合）
+               模型：APP->user.php （如果分前后台，可建立admin或者home文件夹放入user.php）。
+      
+        bootstrap：（laravel启动目录）->autoload.php（自动加载）
+ 
+        config：(配置目录)：database（数据库），app(项目配置)，auth（定义用户认证登录的配置），filesystems（上传，储存）
+       
+        database(数据迁移)：migrations（创建数据表的类文件）seeds(种子文件目录->模拟空数据表的数据)，
+
+        public(入口文件)。
+
+        resources(存放视图文件，还有语言包文件)。->views（视图->可以分目录） lang(语言包)
+
+        routes（路由->web.php（项目路由文件）
+ 
+        storage（日志，图片储存目录，用户）->app(存放用户上传的文件)，logs(日志)，framework（框架运行的缓存文件）
+
+        vendor（第三方代码依赖->工具类）。laravel(框架核心代码)。->composer安装的第三方的工具都在里面
+        
+
+          .env（项目的配置文件）
+          artisan（脚手架文件）      执行命令  #php artisan
+      
+       
+        

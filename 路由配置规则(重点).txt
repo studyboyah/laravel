@@ -1,0 +1,42 @@
+位置：routes/web.php
+
+        路由定义格式：Route::请求方式（get/post）（'请求的url',匿名函数或控制响应的方法)
+         例如：Route::get('/', function () {return view('welcome');});
+
+        如果访问/home地址路由可以写成：
+         Route::get('/home', function () {echo 1;});   访问：http://www.laravel.com/home
+    
+        如果一个路由要响应post和get多个请求，可以用match和any
+          Route::match(['get','post'],)'/', function () {return view('welcome');});自己定义
+          Route::any('/',function(){});匹配任意请求。
+  
+     路由传参：
+         必选参数“/test/{id}”，function($id)
+          Route::get('/test/{id}',function($id){echo "当前的ID是".$id});  访问 http://www.laravel.com/test/1
+        
+         可选参数 “/test/{id?}”，function($id='')
+         
+         可以通过？的形式传递参数
+          Route::get('/test',function(){echo "当前的ID是".$_GET['id']});  访问 http://www.laravel.com/test?id=1 
+
+     路由别名：
+          Route::get('/', function () {return view('welcome');})->name(welcome);
+     调用该路由：
+          route("welcome");
+     查看已有路由  cmd->php artisan route:list
+
+     路由群组：
+         例如全部访问admin下面的控制器
+            Route::group(['prefix'=>'admin'],function(){
+               Route::get('user',function(){
+                     // 匹配 “/admin/user”URL 
+ })
+})            
+
+
+   资源路由：
+      创建命令：php artisan make:controller ArticleController    路由规则：Route::resource('article','ArticleController');
+      访问URL：域名+article(默认访问到index),        2.域名+article/方法名（访问该文件下其他方法）
+
+    控制器路由：
+       Route::get('/test','TestController@index'); ->>>>Route::get('/自定义'，'控制器@方法')
