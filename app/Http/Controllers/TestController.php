@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 class TestController extends Controller
 {
     public function index(){
-        echo $_GET['id'];
+    	echo 0.1;
+        if (0.1+0.2===0.3) {
+        	echo 1;
+        }else{
+        	echo 2;
+        }
     }
 }

@@ -1,0 +1,25 @@
+视图路径：
+     视图在resources/views目录下，可以进行分目录管理。
+     文件名后缀是.blade.php，可以使用blade模板引擎，可以使用{{$title}}语法
+     可以使用PHP后缀，不能使用模板引擎，只能使用原生写法。
+     展示视图的方法 Return view('视图文件的名称')；如果是分目录则是：Return view('分目录.视图文件的名称')；
+
+变量分配与展示：
+     1.view(模板文件名称，数组)；=》常用              =》在视图中使用{{$变量名}}。
+     2.view(模板文件名称)->with(数组)；
+     3.view(模板文件名称)->with(名称，值)->with(名称，值)；
+
+扩展传参（compact）
+   PHP自带函数，跟laravel框架无关；作用主要是用于数组打包。
+   语法compact('变量名1',‘变量名2’)；=》return view('home.user',compact('name','age'));
+
+
+模板中直接使用函数
+      语法：{{函数名（'参数1'，参数2，。。。。。。。）}}=>{{date(''y=m-d H:i:s,$time)}}
+
+在视图中循环数据
+      视图中的写法 @ foreach(......)   循环体   @endfoeach
+             @foreach($data as $val)  {{$val->id}}  @endforeach
+
+在视图中可以执行   if        判断    
+       语法：@if()@elseif()@else@endif     

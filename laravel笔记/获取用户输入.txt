@@ -1,0 +1,14 @@
+必须引入     use    Illuminate\Support\Facades\Input	
+Input::all()                     获取用户所有的输入
+Input::get()                    获取单个用户的输入
+Input::only()                  获取指定几个用户的输入
+Input::except([])            获取指定几个用户的输入以外的所有参数
+Input::has()                   判断每个参数是否存在
+Input::get ('参数的名字'，'如果参数没有被传递使用默认值')       
+
+
+配置别名在config中的app.php       
+  'Input'=>Illuminate\Support\Facades\Input::class   这样引入就可以直接 use Input
+
+
+在laravel中，友好输出的函数是dd()；相当于dump+die;

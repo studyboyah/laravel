@@ -1,0 +1,46 @@
+DB类操作数据库：
+          基本用法：DB::table('tableName')=>获取操作数据表的实例
+          多个where一起使用是并且（and）关系
+          多个orwhere一起使用是或者（or）关系
+
+         数据库在laravel中的配置在.evn文件里面（根目录下）；
+         在config中的database.php也可以配置，项目上线建议关掉‘s'trict’属性。
+  
+         在控制器中必须引入门面 use DB（DB门面在app.php已经定义了别名DB，可以直接使用）
+
+
+创建DB路由：
+         Route::get('add','TestController@add');//增加
+         Route::get('del','TestController@del');//删除
+         Route::get('update','TestController@update');//修改
+         Route::get('select','TestController@select');//查找
+
+
+增加数据：
+ insert(数组)->可以添加一条或者多条数据，返回布尔值
+ insertGetId()->一条数据，返回自增的ID
+
+修改数据：->where('字段'，'运算符','值')=>where('张三','='','1')；
+ update()->可以修改整个记录中 的全部字段
+ increment()->表示修改数字字段的数值增加（递增或递减）=》记录登陆次数，积分+-1等
+ decrement()->表示修改数字字段的数值增加（递增或递减）=》记录登陆次数，积分+-1等
+  increment('age')  每次+1     increment('age'，5)  每次+5
+
+查询数据
+     取出所有数据：返回对象
+         DB::table('member')->get();=>select * from member  获取member所有数据。
+    取出单条数据：返回对象
+         DB::table('member')->where('id',1)->first(); 获取1条数据。
+    获取其中一个具体的值
+         DB::table('member')->where('id',1)->value('字段');
+    获取其中多个具体的值
+          DB::table('member')->select('name',email)->get();
+    排序操作
+         DB::table('member')->orderBy('age','desc')->get();
+    分页操作
+       DB::table('member')->limit(3)->offset(2)->get();=>limit(限制条数),offset（从什么地方开始)
+
+删除数据
+     delete     表示删除记录=》返回值为受影响的条数
+     truncate  表示清空整个数据表
+     DB::table('member')->where（'id','<'，'3'）->delete();

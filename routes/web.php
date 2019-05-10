@@ -18,13 +18,16 @@ Route::get('/', function () {
 //控制器路由
 Route::get('/test','TestController@index');
 
-//分目录控制
-Route::get('/login','Admin\LoginController@index');
+// //分目录控制
+// Route::get('/login','Admin\LoginController@index');
 
 //资源路由 
 Route::resource('article','ArticleController');
 
 //路由群组
-// Route::group(['middleware' => 'admin'], function () {
-//       Route::get('/test','TestController@index');
-// });
+Route::group(['prefix' => 'admin'], function () {
+ Route::get('/login','Admin\LoginController@index');
+ Route::get('/login_again','Admin\LoginController@login');
+ Route::get('/user','Admin\LoginController@user');	
+});
+
