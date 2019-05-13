@@ -12,6 +12,12 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        //
+        //这是不需要csrf验证的白名单
+
+        //代表全部路由
+        //'*'
+
+        //代表单独路由
+        '/admin/verification'
     ];
 }

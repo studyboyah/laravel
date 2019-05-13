@@ -1,0 +1,13 @@
+创建form表单  表单属性必要有method(post)   enctype属性（multipart/form-data）
+   <p>头像：<input type=file name=avatar></p>
+
+控制器：
+  头部引入：
+     use Illuminate\Http\Request;
+     use Illuminate\Support\Facades\Storage;
+     use Response;
+可以使用hasfile方法判断文件是否存在
+   if($request->hasfile('photo')){}
+
+可以使用isValid方法判断文件在上传过程中是否出错
+   if($request->file('photo')->isValid()){}

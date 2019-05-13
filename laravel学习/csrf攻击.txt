@@ -1,0 +1,9 @@
+csrf攻击是跨站请求伪造的英文缩写。
+   laravel自动为每个用户session生成一个CSRF session,验证登陆和发起请求是否为同一个人。
+   laravel提供了一个全局函数csrf token来获取该token值
+   必须在提交的时候带上csrf token  =>>>
+     <input type='hidden' name='_token' value="{{csrf_token()}}"> ====={{csrf_field}}
+
+
+  在接口开发中，也可以避免csrf验证，只需要将接口地址加入白名单，白名单在APP/HTTP/MIDDLEWARE/VeifycsrfToken.php
+    =>>>>>>protected $except=['home/login/index']

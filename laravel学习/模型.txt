@@ -1,0 +1,8 @@
+建议在APP目录下进行分目录管理
+   命名规则 首字母大写（User.php）  ==>artsian命令==》php artisan make:model Home/Member
+ 
+
+定义模型（重点）
+   1.定义一个$table属性，值是不要前缀的表名，如果不指定则会默认则会找类名复数作为表明（users）
+   2.如果需要使用AR模式的find方法，则可能需要指定主键（Model::find(n)）.
+   3.

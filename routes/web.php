@@ -15,11 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 //控制器路由
 Route::get('/test','TestController@index');
 
 // //分目录控制
-// Route::get('/login','Admin\LoginController@index');
+Route::get('/login','Admin\LoginController@index');
 
 //资源路由 
 Route::resource('article','ArticleController');
@@ -28,6 +30,8 @@ Route::resource('article','ArticleController');
 Route::group(['prefix' => 'admin'], function () {
  Route::get('/login','Admin\LoginController@index');
  Route::get('/login_again','Admin\LoginController@login');
- Route::get('/user','Admin\LoginController@user');	
+ Route::get('/user','Admin\LoginController@user');
+ Route::get('/make','Admin\LoginController@make');
+ Route::any('/verification','Admin\LoginController@verification');	
 });
 

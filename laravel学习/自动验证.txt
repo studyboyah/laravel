@@ -1,0 +1,51 @@
+一般框架都会提供一个自动验证机制
+     验证方式1：控制器方法验证：validate方法。 $this->validate();
+     如何判断请求类型：request()->method();返回大写的GET或者POST
+      
+     基本验证规则：
+         required:不能为空     max:255(最长255个字符)    min:1(最少1个字符)  email(验证邮箱是否合法) 
+         confirmed(验证2个字段是否相同，如果验证的字段是password,则必须输入一个与之匹配的password confirmed字段)
+         integer(验证字段必须是整型)              ip(验证字段必须是IP地址)              numeric(验证字段必须是数值)
+         max:value(验证字段必须小于等于最大值，和字符串，数值，文件字段的size规则一起使用)
+         。。。。。。。。。。。。。
+   
+      代码片段：
+                     //自动验证
+                  public function verification(Request $request){    
+                 //判断请求的类型
+                   if (request()->method()=='POST') {
+                   //自动验证
+                    $this->validate($request,[
+                   //具体的规则
+                     //字段=》验证规则1|验证规则2|。。。
+                    //如果验证不同会重定向到发送请求页面（302）
+                      'name'=>'required|min:2|max:255',
+                      'age'=>'required|integer|min:1|max:100',
+                      'email'=>'required|email' 
+                   ]);
+         dd(2);
+      }else{
+
+         //展示视图
+         return view('home.verification');
+      }
+   }
+
+
+     输出错误信息：
+          所有验证错误信息都一次性存放到session中
+         在视图中输出
+          	@if(count($errors)>0)
+            <div class="mark">
+                @if(is_object($errors))
+                    @foreach($errors->all() as $error)
+                        <p>{{$error}}</p>
+                    @endforeach
+                @else
+                    <p>{{$errors}}</p>
+                @endif
+            </div>
+        @endif
+
+
+

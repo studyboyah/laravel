@@ -23,3 +23,7 @@
 
 在视图中可以执行   if        判断    
        语法：@if()@elseif()@else@endif     
+
+外部静态文件引入方式
+  1. CSS文件一般放在根目录下的public /CSS中=>        <link rel="stylesheet" type="text/css" href="/css/app.css">
+      在laravel中封装了方法asset =>  <link rel="stylesheet" type="text/css" href="{{asset('css')}}/app.css">
